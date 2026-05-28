@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#timezoneInput {
+    padding: 12px 15px;
+    border: 2px solid #667eea;
+    border-radius: 8px;
+    font-size: 1em;
+    flex: 1;
+    min-width: 250px;
+    transition: border-color 0.3s;
+}
+
+#timezoneInput:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 0 10px rgba(118, 75, 162, 0.3);
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#addBtn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+#addBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+#addBtn:active {
+    transform: translateY(0);
+}
+
+#resetBtn {
+    background: #ff6b6b;
+    color: white;
+}
+
+#resetBtn:hover {
+    background: #ee5a52;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+}
+
+#resetBtn:active {
+    transform: translateY(0);
+}
+
+.clocks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.clock {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.clock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    pointer-events: none;
+}
+
+.clock:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.clock-timezone {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.clock-time {
+    font-size: 3em;
+    font-weight: 700;
+    color: #667eea;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.clock-date {
+    font-size: 0.95em;
+    color: #666;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.clock-offset {
+    font-size: 0.9em;
+    color: #888;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.remove-btn {
+    width: 100%;
+    padding: 8px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.remove-btn:hover {
+    background: #ee5a52;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-size: 1.2em;
+}
+
+.error {
+    background: #ffe5e5;
+    color: #d32f2f;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+.success {
+    background: #e5ffe5;
+    color: #2e7d32;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .clocks-container {
+        grid-template-columns: 1fr;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    #timezoneInput {
+        min-width: 100%;
+    }
+
+    button {
+        flex: 1;
+    }
+
+    .clock-time {
+        font-size: 2.3em;
+    }
+}
